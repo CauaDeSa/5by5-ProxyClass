@@ -72,6 +72,10 @@ class Program
             proxy.OperacaoCustosa();
         }
 
+        Console.WriteLine();
+
         proxy.DescartarObjeto();
+
+        Console.WriteLine();
     }
 }
