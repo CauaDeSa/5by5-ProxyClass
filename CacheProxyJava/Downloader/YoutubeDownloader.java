@@ -4,13 +4,14 @@ import Lib;
 import java.util.HashMap;
 
 public class YouTubeDownloader {
-    private ThirdPartyYouTubeLib api;
+    private YouTubeLib api;
 
-    public YouTubeDownloader(ThirdPartyYouTubeLib api) {
+    public YouTubeDownloader(YouTubeLib api) {
         this.api = api;
     }
 
     public void renderVideoPage(String videoId) {
+
         Video video = api.getVideo(videoId);
         System.out.println("\n-------------------------------");
         System.out.println("Video page (imagine fancy HTML)");

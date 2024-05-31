@@ -1,16 +1,14 @@
-package refactoring_guru.proxy.example;
-
 import Downloader.YouTubeDownloader;
 import Proxy.YouTubeCacheProxy;
-import Lib.ThirdPartyYouTubeClass;
+import Lib.YouTubeClass;
 
 public class Demo {
 
     public static void main(String[] args) {
-        YouTubeDownloader naiveDownloader = new YouTubeDownloader(new ThirdPartyYouTubeClass());
+        YouTubeDownloader downloader = new YouTubeDownloader(new YouTubeClass());
         YouTubeDownloader smartDownloader = new YouTubeDownloader(new YouTubeCacheProxy());
 
-        long naive = test(naiveDownloader);
+        long naive = test(downloader);
         long smart = test(smartDownloader);
 
         System.out.print("Time saved by caching proxy: " + (naive - smart) + "ms");
@@ -20,12 +18,13 @@ public class Demo {
         long startTime = System.currentTimeMillis();
 
         downloader.renderPopularVideos();
-        downloader.renderVideoPage("catzzzzzzzzz");
-        downloader.renderPopularVideos();
-        downloader.renderVideoPage("dancesvideoo");
 
-        downloader.renderVideoPage("catzzzzzzzzz");
-        downloader.renderVideoPage("someothervid");
+        downloader.renderVideoPage("Cats");
+        downloader.renderPopularVideos();
+        downloader.renderVideoPage("TikTok Dances");
+
+        downloader.renderVideoPage("Cats");
+        downloader.renderVideoPage("Outros");
 
         long estimatedTime = System.currentTimeMillis() - startTime;
         System.out.print("Time elapsed: " + estimatedTime + "ms\n");
